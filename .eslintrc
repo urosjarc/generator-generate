@@ -1,0 +1,75 @@
+{
+	"root": true,
+	"parserOptions": {
+		"ecmaVersion": 5,
+		"impliedStrict": true,
+		"sourceType": "script"
+	},
+	"env": {
+		"mocha": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"airbnb-base"
+	],
+	"rules": {
+		"indent": [
+			"error",
+			"tab"
+		],
+		"strict": [
+			"error",
+			"global"
+		],
+		"object-curly-spacing": [
+			"error",
+			"never"
+		],
+		"comma-dangle": [
+			"error",
+			"never"
+		],
+		"require-jsdoc": [
+			"error",
+			{
+				"require": {
+					"FunctionDeclaration": true,
+					"MethodDefinition": true,
+					"ClassDeclaration": true
+				}
+			}
+		],
+		"no-param-reassign": [
+			"error",
+			{
+				"props": false
+			}
+		],
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": [
+					"config/jsdocPlugins/**",
+					"**/test/**",
+					"**/gulpfile.js",
+					"gulpspec.js",
+					"lib/tester.js"
+				],
+				"optionalDependencies": false
+			}
+		],
+		"vars-on-top": "warn",
+		"no-else-return": "off",
+		"prefer-rest-params": "off",
+		"valid-jsdoc": "off",
+		"no-underscore-dangle": "off",
+		"prefer-arrow-callback": "off",
+		"prefer-template": "off",
+		"no-tabs": "off",
+		"func-names": "off",
+		"no-var": "off",
+		"object-shorthand": "off",
+		"consistent-return": "off"
+	}
+}
