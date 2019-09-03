@@ -9,3 +9,4 @@
 /build
 /npm-debug.log*
 /generator.debug
+package-lock.json
