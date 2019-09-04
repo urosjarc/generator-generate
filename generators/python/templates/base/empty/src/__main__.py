@@ -1,4 +1,4 @@
-#MainComment
+##-MainComment
 def main():
 	print("Hello: <%-app.name%>!")
 

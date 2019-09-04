@@ -12,7 +12,7 @@ install-libs: ## install external libraries
 	@echo "Here installing..."
 
 install-venv: clean-venv ## install virtualenv
-	python3.6 -m venv $(VIRTUAL_ENV)
+	python3 -m venv $(VIRTUAL_ENV)
 
 install-dep: clean-py ## install dependencies
 	$(PIP) install --no-cache-dir -e .

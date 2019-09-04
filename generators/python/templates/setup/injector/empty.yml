@@ -1,0 +1,7 @@
+./src/__main__.py:
+  flag: "##-MainComment"
+  removeFlag: false
+  text: |-
+    # This is another comment...
+
+

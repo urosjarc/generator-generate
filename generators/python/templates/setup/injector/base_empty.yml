@@ -1,6 +1,0 @@
-./src/__main__.py:
-	flag: #MainComment
-	text: |-
-		'''
-			This is testing for base_empy injector
-		'''

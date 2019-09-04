@@ -1,8 +1,0 @@
-./src/__main__.py:
-	flag: #MainComment
-	text: |-
-		'''
-			This is another comment...
-		'''
-
-

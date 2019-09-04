@@ -1,7 +1,8 @@
 'use strict';
 
-var subgenerator = require('../app/subgenerator');
+var subgenerator = require('../app/lib').subgenerator;
 var generator = require('yeoman-generator');
+var sh = require('shelljs');
 
 module.exports = generator.Base.extend({
 	_questions: function () {
@@ -22,10 +23,15 @@ module.exports = generator.Base.extend({
 	},
 
 	_base_empty: function () {
-		console.log("Executing base empty");
+		sh.echo("\n> make setup ...\n")
+		sh.exec("make setup");
+
+		sh.echo("\n> make run ...\n")
+		sh.exec("make run");
 	},
 
 	_module_empty: function () {
-		console.log("Executing module empty");
+		sh.echo("\n> make run ...\n")
+		sh.exec("make run");
 	}
 }).extend(subgenerator);
