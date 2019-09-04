@@ -14,9 +14,9 @@ var Helper = require('./lib').helper;
  * for generator to use.
  */
 exports.constructor = function () {
-	// Setup arguments
+	// Setup CLI arguments
 	generator.Base.apply(this, arguments);
-	// Setup options
+	// Setup debug option
 	this.option('debug', {
 		desc: 'Debug generator to ./generator.debug file',
 		type: Boolean,
@@ -29,7 +29,9 @@ exports.constructor = function () {
  * Setup up helper and register helper process events.
  */
 exports.initializing = function () {
+	// Initialize helper
 	this.gen = new Helper(this);
+	// Register process events
 	this.gen.registerProcessEvents();
 	this._answeres = {};
 };
@@ -41,9 +43,14 @@ exports.initializing = function () {
 exports.prompting = function () {
 	var self = this;
 
+	// Log method info
 	this.gen.logger.info('Run context:', 'PROMPTING');
 
-	if (!this.gen.isGeneratorInited()) {
+	if (this.gen.isGeneratorInited()) {
+		// If gen. inited say welcome back
+		this.gen.sayWelcomeBack();
+	} else {
+		// If gen. not inited say welcome and start initial prompting
 		this.gen.sayWelcome();
 
 		return this.gen.initPrompt(
@@ -51,8 +58,6 @@ exports.prompting = function () {
 			function (answeres) {
 				self._answeres = answeres;
 			});
-	} else {
-		this.gen.sayWelcomeBack();
 	}
 };
 
@@ -61,9 +66,11 @@ exports.prompting = function () {
  * prompting answeres.
  */
 exports.configuring = function () {
+	// Log method info
 	this.gen.logger.info('Run context:', 'CONFIGURING');
 
 	if (!this.gen.isGeneratorInited()) {
+		// If gen inited create .yo-rc.json file.
 		this.gen.createYoRc(this._answeres);
 	}
 };
@@ -73,8 +80,10 @@ exports.configuring = function () {
  * base on user answeres.
  */
 exports.compose = function () {
+	// Log method info
 	this.gen.logger.info('Run context:', 'COMPOSE');
 
+	// Call subgenerator "<.yo-rc.json>.app.subgenerator"
 	this.gen.callSubgenerator(
 		this.gen.getYoRc('app.subgenerator')
 	);
@@ -85,8 +94,11 @@ exports.compose = function () {
  * ending logic.
  */
 exports.end = function () {
+	// Log method info
 	this.gen.logger.info('Run context:', 'END');
 
+	// Set yorc file to inited
 	this.gen.setYoRc(true, 'inited');
+	// Say good bye
 	this.gen.sayGoodBye();
 };

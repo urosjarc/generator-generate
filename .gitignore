@@ -1,12 +1,5 @@
 /node_modules
 /.idea
-
-/docs/index.md
-/docs/contribution.md
-/docs/changelog.md
-
-/docs.json
-/build
-/npm-debug.log*
-/generator.debug
 package-lock.json
+
+

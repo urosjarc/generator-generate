@@ -1,6 +1,6 @@
 Description:
+  This is project generator. :)
   
-
 Example:
-  yo 
-  yo  --debug
+  yo --debug
+  yo

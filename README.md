@@ -1,7 +1,4 @@
-## Generate project
-
-First follow [installation](/#instalation) section and install requirements.
-Start `generate` with yeoman CLI to generate starting structure.
+## generator-generate
 
 ```
 yo generate
