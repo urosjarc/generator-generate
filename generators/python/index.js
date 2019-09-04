@@ -7,17 +7,25 @@ module.exports = generator.Base.extend({
 	_questions: function () {
 		return {
 			base: {
-				base_sample: []
+				empty: []
 			},
 			module: {
-				module_sample: []
+				empty: [
+					{
+						type: 'input',
+						name: 'module',
+						message: 'Module name:'
+					}
+                ]
 			}
 		};
 	},
 
-	_base_base_sample: function () {
+	_base_empty: function () {
+		console.log("Executing base empty");
 	},
 
-	_module_module_sample: function () {
+	_module_empty: function () {
+		console.log("Executing module empty");
 	}
 }).extend(subgenerator);
