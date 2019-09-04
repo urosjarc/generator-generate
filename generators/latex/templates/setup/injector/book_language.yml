@@ -1,0 +1,6 @@
+./makefile:
+	flag: "#! Book languages"
+	removeFlag: false
+	text: |-
+		book-<%-app.lang%>:
+			$(MAKE) book LANG=<%-app.lang%>

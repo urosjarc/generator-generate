@@ -1,5 +1,5 @@
 ./src/__main__.py:
-  flag: "##-MainComment"
+  flag: "#! Main comment"
   removeFlag: false
   text: |-
     # This is another comment...
