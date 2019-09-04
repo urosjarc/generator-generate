@@ -76,22 +76,34 @@ exports.writing = function () {
  * Methods must be defined in subgenerator.
  */
 exports.conflicts = function () {
-	var subGenMethod;
-
 	// Log action
 	this.gen.logger.info('Run context:', 'CONFLICTS');
 
 	// If subgenerator is inited
 	if (this.gen.isSubgeneratorInited()) {
-		subGenMethod = this._answeres.module.name;
 		// > Run line injector
-		this.gen.runLineInjector(subGenMethod);
+		this.gen.runLineInjector(this._answeres.module.name);
+	}
+};
+
+exports.install = function(){
+	// Log action
+	this.gen.logger.info('Run context:', 'INSTALL');
+
+	var subGenType;
+	var subGenMethod;
+
+	// If subgenerator is inited
+	if (this.gen.isSubgeneratorInited()) {
+		subGenMethod = this._answeres.module.name;
 		// > Call subgen. method with `_module_` prefix
-		this.gen.callSubgeneratorMethod('_module_' + subGenMethod);
+		subGenType = '_module_';
 	} else {
 		// Else
 		subGenMethod = this._answeres.base.name;
 		// > Call subgen. method with `_base_` prefix
-		this.gen.callSubgeneratorMethod('_base_' + subGenMethod);
+		subGenType = '_base_';
 	}
-};
+
+	this.gen.callSubgeneratorMethod(subGenType + subGenMethod);
+}
