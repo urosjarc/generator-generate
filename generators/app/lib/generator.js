@@ -1,7 +1,7 @@
 'use strict';
 
 var generator = require('yeoman-generator');
-var Helper = require('./lib').helper;
+var Helper = require('./helper');
 
 /**
  * App subgenerator methods.

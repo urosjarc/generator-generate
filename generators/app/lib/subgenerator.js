@@ -1,6 +1,6 @@
 'use strict';
 
-var Helper = require('./lib').helper;
+var Helper = require('./helper');
 
 /**
  * Generator methods.

@@ -1,7 +1,7 @@
 'use strict';
 
 var path = require('path');
-var generator2 = require('./generator');
+var generator2 = require('./lib').generator;
 var utils = require('./lib').utils;
 var generator = require('yeoman-generator');
 
