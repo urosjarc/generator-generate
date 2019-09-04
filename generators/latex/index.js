@@ -8,7 +8,14 @@ module.exports = generator.Base.extend({
 	_questions: function () {
 		return {
 			base: {
-				book: []
+				book: [
+					{
+						type: 'input',
+						name: 'lang',
+						message: 'Language (short):',
+						default: 'slo'
+					}
+				]
 			},
 			module: {
 				book_translation: [],
@@ -16,7 +23,8 @@ module.exports = generator.Base.extend({
 					{
 						type: 'input',
 						name: 'lang',
-						message: 'Language (short):'
+						message: 'Language (short):',
+						default: 'eng'
 					}
                 ]
 			}
@@ -24,12 +32,14 @@ module.exports = generator.Base.extend({
 	},
 
 	_base_book: function () {
+		this._module_book_language();
 	},
 
-	_base_book_translation: function () {
+	_module_book_translation: function () {
 	},
 
 	_module_book_language: function () {
-		sh.exec("make")
+		sh.echo("\n> make ...\n");
+		sh.exec("make");
 	}
 }).extend(subgenerator);

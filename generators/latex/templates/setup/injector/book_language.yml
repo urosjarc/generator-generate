@@ -1,6 +1,9 @@
 ./makefile:
-	flag: "#! Book languages"
-	removeFlag: false
-	text: |-
-		book-<%-app.lang%>:
-			$(MAKE) book LANG=<%-app.lang%>
+  -
+    flag: "#! Book languages"
+    removeFlag: false
+    text: "book-<%-module.lang%>:\n\t$(MAKE) book LAN=<%-module.lang%>"
+  -
+    flag: "book-all: \\"
+    removeFlag: false
+    text: "\tbook-<%-module.lang%> \\"

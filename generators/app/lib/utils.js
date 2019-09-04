@@ -130,8 +130,8 @@ exports.getAllFilesPaths = function getAllFilesPaths(dir) {
  * @param removeFlag {boolean} Shoul remove flag?
  * @returns {string} New injected file content.
  */
-exports.injectLines = function (filePath, lineFlag, injectArr, removeFlag) {
-	var oldFileLines = fs.readFileSync(filePath, 'utf8').split('\n');
+exports.injectLines = function (fileText, lineFlag, injectArr, removeFlag) {
+	var oldFileLines = fileText.split('\n');
 	var newFileLines = [];
 	var lineFlagFound = false;
 

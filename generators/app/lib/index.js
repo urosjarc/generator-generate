@@ -4,7 +4,6 @@ var generator = require('./generator');
 var subgenerator = require('./subgenerator');
 var helper = require('./helper');
 var utils = require('./utils');
-var tester = require('./tester');
 
 /**
  * Package main entry point which exports all public modules.
@@ -43,11 +42,5 @@ module.exports = {
 	 * @inner
 	 */
 	utils: utils,
-
-	/**
-	 * {@link module:tester}
-	 * @inner
-	 */
-	tester: tester
 
 };

@@ -447,26 +447,39 @@ Helper.prototype.runLineInjector = function (injectorName) {
 			this.ENV.path.getDestination(filePath),
 			this.getYoRc()
 		);
-		// > Check remove flag in injector
-		var removeFlag = !!inject[filePath].removeFlag;
-		var lineFlag = inject[filePath].flag;
-		var injectArr = ejs.render(
-			inject[filePath].text,
-			this.getEjsAllConfig()
-		).split('\n');
 
-		// > Debug injector action and info
-		this.logger.debug('Inject', {
-			filePath: destFilePath,
-			lineFlag: lineFlag,
-			injectArr: injectArr
-		});
+		// > If inject info is object than add support for multiple injections in one file!
+		var injectInfos = inject[filePath];
+		if(!Array.isArray(injectInfos))
+			injectInfos = [injectInfos];
 
-		// > Write file to destination and inject lines on line flag, optional do not remove flag
-		this.gen.fs.write(
-			destFilePath,
-			utils.injectLines(destFilePath, lineFlag, injectArr, removeFlag)
-		);
+		// > Get file text
+		var fileText = fs.readFileSync(filePath, 'utf8');
+
+		for(var i in injectInfos) {
+			var injectInfo = injectInfos[i];
+
+			// > Check remove flag in injector
+			var removeFlag = !!injectInfo.removeFlag;
+			var lineFlag = injectInfo.flag;
+			var injectArr = ejs.render(
+				injectInfo.text,
+				this.getEjsAllConfig()
+			).split('\n');
+
+			// > Debug injector action and info
+			this.logger.debug('Inject', {
+				filePath: destFilePath,
+				lineFlag: lineFlag,
+				injectArr: injectArr
+			});
+
+			// > Inject lines on line flag, optional do not remove flag
+			fileText = utils.injectLines(fileText, lineFlag, injectArr, removeFlag);
+		}
+
+		// > Write final file text to destination
+		this.gen.fs.write(destFilePath, fileText);
 	}
 };
 
