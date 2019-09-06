@@ -1,0 +1,50 @@
+settings.gradle.kts:
+  flag: "//! Modules"
+  removeFlag: false
+  text: "include(Mods.<%-module.name%>)"
+
+buildSrc/src/main/kotlin/Dependencies.kt:
+  -
+    flag: "//! Modules"
+    removeFlag: false
+    text: 'val <%-module.name%> = ":app:<%-module.name%>"'
+  - 
+    flag: "//! Bintray"
+    removeFlag: false
+    text: 'val ktor = "https://kotlin.bintray.com/ktor"'
+  -
+    flag: "//! Plugins"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val heroku = Plugin("com.heroku.sdk.heroku-gradle", "1.0.4")
+      val shadow = Plugin("com.github.johnrengelman.shadow", "5.0.0")
+  -
+    flag: "//! Versions"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val ktor = "<%-module.ktor_version%>"
+      val logback = "<%-module.logback_version%>"
+  - flag: "//! Libs"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val logback = "ch.qos.logback:logback-classic:${Vers.logback}"
+      val ktor = listOf(
+          "io.ktor:ktor-server-netty:${Vers.ktor}",
+          "io.ktor:ktor-server-core:${Vers.ktor}",
+          "io.ktor:ktor-server-host-common:${Vers.ktor}",
+          "io.ktor:ktor-auth:${Vers.ktor}",
+          "io.ktor:ktor-auth-jwt:${Vers.ktor}",
+          "io.ktor:ktor-auth-ldap:${Vers.ktor}",
+          "io.ktor:ktor-gson:${Vers.ktor}",
+          "io.ktor:ktor-locations:${Vers.ktor}",
+          "io.ktor:ktor-metrics:${Vers.ktor}",
+          "io.ktor:ktor-server-sessions:${Vers.ktor}",
+          "io.ktor:ktor-websockets:${Vers.ktor}",
+          "io.ktor:ktor-network:${Vers.ktor}",
+          "io.ktor:ktor-network-tls:${Vers.ktor}")
+      val ktor_test = listOf(
+          "io.ktor:ktor-server-tests:${Vers.ktor}")
+  

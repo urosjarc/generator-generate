@@ -1,4 +1,4 @@
-./makefile:
+makefile:
   -
     flag: "#! Book languages"
     removeFlag: false

@@ -28,6 +28,12 @@ module.exports = generator.Base.extend({
 			},
 			{
 				type: 'input',
+				name: 'version',
+				message: 'Application version:',
+				default: '0.0.1'
+			},
+			{
+				type: 'input',
 				name: 'authorName',
 				message: 'Author fullname:',
 				default: gitName

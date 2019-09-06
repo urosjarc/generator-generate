@@ -1,0 +1,30 @@
+settings.gradle.kts:
+  flag: "//! Modules"
+  removeFlag: false
+  text: "include(Mods.<%-module.name%>)"
+
+buildSrc/src/main/kotlin/Dependencies.kt:
+  -  
+    flag: "//! Modules"
+    removeFlag: false
+    text: 'val <%-module.name%> = ":app:<%-module.name%>"'
+  -
+    flag: "//! Plugins"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val javafx = Plugin("org.openjfx.javafxplugin", "0.0.8")
+  -
+    flag: "//! Versions"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val javafx_jvm = "<%-module.fx_jvm_version%>"
+      val tornadofx = "<%-module.tornado_version%>"
+  -
+    flag: "//! Libs"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val tornadofx = "no.tornado:tornadofx:${Vers.tornadofx}"
+

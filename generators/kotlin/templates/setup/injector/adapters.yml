@@ -1,0 +1,9 @@
+settings.gradle.kts:
+  flag: "//! Modules"
+  removeFlag: false
+  text: "include(Mods.<%-module.name%>)"
+  
+buildSrc/src/main/kotlin/Dependencies.kt:
+  flag: "//! Bintray"
+  removeFlag: false
+  text: 'val <%-module.name%> = ":<%-module.name%>"'

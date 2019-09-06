@@ -7,7 +7,14 @@ module.exports = generator.Base.extend({
 	_questions: function () {
 		return {
 			base: {
-				base_sample: []
+				clean: [
+					{
+						type: 'input',
+						name: 'gradle_version',
+						message: 'Gradle version:',
+						default: '5.6.2'
+					}
+				]
 			},
 			module: {
 				module_sample: []
@@ -15,7 +22,12 @@ module.exports = generator.Base.extend({
 		};
 	},
 
-	_base_base_sample: function () {
+	_base_clean: function () {
+		sh.echo("\n> ./gradlew wrapper ...\n")
+		sh.exec("./gradlew wrapper");
+
+		sh.echo("\n> ./gradlew check ...\n")
+		sh.exec("./gradlew check");
 	},
 
 	_module_module_sample: function () {

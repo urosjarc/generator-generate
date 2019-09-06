@@ -1,4 +1,4 @@
-./src/__main__.py:
+src/__main__.py:
   flag: "#! Main comment"
   removeFlag: false
   text: |-

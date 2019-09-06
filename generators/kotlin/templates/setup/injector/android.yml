@@ -1,0 +1,50 @@
+settings.gradle.kts:
+  flag: "//! Modules"
+  removeFlag: false
+  text: "include(Mods.<%-module.name%>)"
+
+gradle.properties:
+  flag: "#! Properties"
+  removeFlag: false
+  text: |-
+    android.useAndroidX=true
+    android.enableJetifier=true
+    
+buildSrc/src/main/kotlin/Dependencies.kt:
+  -
+    flag: "//! Modules"
+    removeFlag: false
+    text: 'val <%-module.name%> = ":app:<%-module.name%>"'
+  -
+    flag: "//! Plugins"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val kotlin_kapt = Plugin("org.jetbrains.kotlin.kapt", Vers.kotlin)
+      val android = listOf(
+          Plugin("com.android.application"),
+          Plugin("kotlin-android"),
+          Plugin("kotlin-android-extensions"))
+  -
+    flag: "//! Versions"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val android_gradle = "<%-module.android_gradle_version%>"
+  -
+    flag: "//! Libs"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val kotlin_gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Vers.kotlin}"
+      val android_gradle = "com.android.tools.build:gradle:${Vers.android_gradle}"
+      val android = listOf(
+          "androidx.appcompat:appcompat:1.0.2",
+          "androidx.core:core-ktx:1.0.2",
+          "androidx.constraintlayout:constraintlayout:1.1.3")
+      val android_test = listOf(
+          "androidx.test.ext:junit:1.1.1",
+          "androidx.test.espresso:espresso-core:3.2.0")
+      val junit_old = "junit:junit:4.12"
+      val junit_vintage = "org.junit.vintage:junit-vintage-engine:${Vers.junit}"
+      val junit_jupiter = "org.junit.jupiter:junit-jupiter:${Vers.junit}"
