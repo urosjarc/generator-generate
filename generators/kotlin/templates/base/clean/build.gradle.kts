@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     base
     id(Plug.kotlin_jvm.id) version Plug.kotlin_jvm.version apply false
+	id(Plug.versions.id) version Plug.versions.version
 }
 
 buildscript {

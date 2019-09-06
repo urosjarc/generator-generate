@@ -10,9 +10,33 @@ module.exports = generator.Base.extend({
 				clean: [
 					{
 						type: 'input',
+						name: 'jvm_version',
+						message: 'Java version:',
+						default: '1.8'
+					},
+					{
+						type: 'input',
+						name: 'kotlin_version',
+						message: 'Kotlin version:',
+						default: '1.3.50'
+					},
+					{
+						type: 'input',
 						name: 'gradle_version',
 						message: 'Gradle version:',
 						default: '5.6.2'
+					},
+					{
+						type: 'input',
+						name: 'junit_version',
+						message: 'Junit version:',
+						default: '5.5.1'
+					},
+					{
+						type: 'input',
+						name: 'versions_version',
+						message: 'Versions version:',
+						default: '0.24.0'
 					}
 				]
 			},
