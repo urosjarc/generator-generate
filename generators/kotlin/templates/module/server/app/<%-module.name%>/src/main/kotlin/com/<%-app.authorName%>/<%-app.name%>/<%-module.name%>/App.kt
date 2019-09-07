@@ -1,4 +1,4 @@
-package com.urosjarc.multibuild
+package com.<%-app.authorName%>.<%-app.name%>
 
 import io.ktor.application.Application
 import io.ktor.application.call

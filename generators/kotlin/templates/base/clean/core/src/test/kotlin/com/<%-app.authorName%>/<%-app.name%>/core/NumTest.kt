@@ -1,4 +1,4 @@
-package com.urosjarc.multibuild.core
+package com.<%-app.authorName%>.<%-app.name%>.core
 
 import org.junit.jupiter.api.Test
 

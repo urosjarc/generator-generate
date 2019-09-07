@@ -1,0 +1,23 @@
+settings.gradle.kts:
+  flag: "//! Modules"
+  removeFlag: false
+  text: "include(Mods.<%-module.name%>)"
+
+buildSrc/src/main/kotlin/Dependencies.kt:
+  -  
+    flag: "//! Modules"
+    removeFlag: false
+    text: 'val <%-module.name%> = ":app:<%-module.name%>"'
+  -
+    flag: "//! Versions"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val clikt = "<%-module.clikt_version%>"
+  -
+    flag: "//! Libs"
+    removeFlag: false
+    text: |-
+      //<%-module.name%>
+      val tornadofx = "com.github.ajalt:clikt:${Vers.clikt_version}"
+

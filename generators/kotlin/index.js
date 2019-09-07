@@ -76,6 +76,14 @@ module.exports = generator.Base.extend({
 						message: 'Logback version:',
 						default: '1.2.3'
 					}
+				],
+				cmdline: [
+					{
+						type: 'input',
+						name: 'clickt_version',
+						message: 'Clickt version:',
+						default: '2.1.0'
+					}
 				]
 			}
 		};
@@ -89,18 +97,25 @@ module.exports = generator.Base.extend({
 	_check: function(module){
 		sh.echo("\n> ./gradlew check ...\n")
 		sh.exec("./gradlew check");
-	}
+	},
 
 	_module_adapter: function () {
 		this._check();
-	}
+	},
+
 	_module_android: function () {
 		this._check();
-	}
+	},
+
 	_module_server: function () {
 		this._check();
-	}
+	},
+
 	_module_desktop: function () {
+		this._check();
+	},
+
+	_module_cmdline: function () {
 		this._check();
 	}
 
