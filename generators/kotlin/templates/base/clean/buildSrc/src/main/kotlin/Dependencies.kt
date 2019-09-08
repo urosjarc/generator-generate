@@ -30,5 +30,6 @@ object Vers {
 
 object Libs {
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Vers.kotlin}"
+	val junit_jupiter = "org.junit.jupiter:junit-jupiter:${Vers.junit}"
 	//! Libs
 }
