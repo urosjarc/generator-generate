@@ -6,17 +6,7 @@ plugins {
 	id(Plug.versions.id) version Plug.versions.version
 }
 
-buildscript {
-    repositories {
-        google()
-        jcenter()
-    }
-
-    dependencies {
-        classpath(Libs.android_gradle)
-        classpath(Libs.kotlin_gradle)
-    }
-}
+//! Buildscript
 
 allprojects {
     group = Proj.group
@@ -42,16 +32,16 @@ allprojects {
     }
 }
 
-configure<Project>(subprojects.filter { it.path != Mods.android }) {
-    apply(plugin = Plug.kotlin_jvm.id)
+subprojects {
+	apply(plugin = Plug.kotlin_jvm.id)
 
-    dependencies {
-        val implementation by configurations
-        val testImplementation by configurations
+	dependencies {
+		val implementation by configurations
+		val testImplementation by configurations
 
-        implementation(Libs.kotlin_stdlib)
-        testImplementation(Libs.junit_jupiter)
-    }
+		implementation(Libs.kotlin_stdlib)
+		testImplementation(Libs.junit_jupiter)
+	}
 }
 
 

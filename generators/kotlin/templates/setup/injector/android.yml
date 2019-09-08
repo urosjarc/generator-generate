@@ -1,7 +1,27 @@
 settings.gradle.kts:
-  flag: "//! Modules"
-  removeFlag: false
-  text: "include(Mods.<%-module.name%>)"
+  -
+    flag: "//! Modules"
+    removeFlag: false
+    text: "include(Mods.<%-module.name%>)"
+  -
+    flag: "//! Buildscript"
+    removeFlag: true
+    text: |-
+      buildscript {
+          repositories {
+              google()
+              jcenter()
+          }
+          dependencies {
+              classpath(Libs.android_gradle)
+              classpath(Libs.kotlin_gradle)
+          }
+      }
+  -
+    flag: "subprojects {"
+    removeFlag: true
+    text: |-
+      configure<Project>(subprojects.filter { it.path != Mods.android }) {
 
 gradle.properties:
   flag: "#! Properties"
