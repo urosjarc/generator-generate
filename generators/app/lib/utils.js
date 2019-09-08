@@ -258,7 +258,7 @@ exports.isEditable = function (filePath, callback) {
 		return callback(err);
 	}
 
-	if([ ".ico", ".png", ".jpg" ].includes(path.extname(filePath)))
+	if([".jar", ".ico", ".png", ".jpg" ].includes(path.extname(filePath)))
 		return callback(null, false);
 
 	return callback(null, true);

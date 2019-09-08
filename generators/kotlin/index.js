@@ -1,7 +1,13 @@
 'use strict';
 
-var subgenerator = require('../app/subgenerator');
+var subgenerator = require('../app/lib').subgenerator;
 var generator = require('yeoman-generator');
+var sh = require('shelljs');
+
+function check(){
+	sh.echo("\n> ./gradlew check ...\n")
+	sh.exec("./gradlew check");
+}
 
 module.exports = generator.Base.extend({
 	_questions: function () {
@@ -41,6 +47,7 @@ module.exports = generator.Base.extend({
 				]
 			},
 			module: {
+				adapter: [],
 				android: [
 					{
 						type: 'input',
@@ -94,29 +101,24 @@ module.exports = generator.Base.extend({
 		sh.exec("./gradlew wrapper");
 	},
 
-	_check: function(module){
-		sh.echo("\n> ./gradlew check ...\n")
-		sh.exec("./gradlew check");
-	},
-
 	_module_adapter: function () {
-		this._check();
+		check();
 	},
 
 	_module_android: function () {
-		this._check();
+		check();
 	},
 
 	_module_server: function () {
-		this._check();
+		check();
 	},
 
 	_module_desktop: function () {
-		this._check();
+		check();
 	},
 
 	_module_cmdline: function () {
-		this._check();
+		check();
 	}
 
 }).extend(subgenerator);
