@@ -28,6 +28,12 @@ module.exports = generator.Base.extend({
 					},
 					{
 						type: 'input',
+						name: 'kotlin_coroutines',
+						message: 'Kotlin coroutines:',
+						default: '1.3.1'
+					},
+					{
+						type: 'input',
 						name: 'gradle_version',
 						message: 'Gradle version:',
 						default: '5.6.2'

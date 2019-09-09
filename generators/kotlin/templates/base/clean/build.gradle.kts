@@ -17,17 +17,17 @@ allprojects {
         google()
     }
 
-    tasks.withType<Test> {
-        useJUnitPlatform()
+	tasks.withType<KotlinCompile> {
+		kotlinOptions {
+			jvmTarget = Vers.jvm
+			allWarningsAsErrors = true
+		}
+	}
+
+	tasks.withType<Test> {
+		useJUnitPlatform()
         testLogging {
             events("passed", "skipped", "failed")
-        }
-    }
-
-    tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = Vers.jvm
-            allWarningsAsErrors = true
         }
     }
 }
@@ -40,6 +40,7 @@ subprojects {
 		val testImplementation by configurations
 
 		implementation(Libs.kotlin_stdlib)
+		implementation(Libs.kotlin_coroutines)
 		testImplementation(Libs.junit_jupiter)
 	}
 }

@@ -23,6 +23,7 @@ object Vers {
     val project = "<%-app.version%>"
     val jvm = "<%-base.jvm_version%>"
     val kotlin = "<%-base.kotlin_version%>"
+	val kotlin_coroutines = "<%-base.kotlin_coroutines%>"
 	val junit = "<%-base.junit_version%>"
 	val versions = "<%-base.versions_version%>"
 	//! Versions
@@ -31,5 +32,6 @@ object Vers {
 object Libs {
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Vers.kotlin}"
 	val junit_jupiter = "org.junit.jupiter:junit-jupiter:${Vers.junit}"
+	val kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Vers.kotlin_coroutines}"
 	//! Libs
 }
